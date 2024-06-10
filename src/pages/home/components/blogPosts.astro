@@ -1,0 +1,152 @@
+---
+import { Image } from "astro:assets";
+
+// assets import
+import vector2 from "../../../assets/vector2.svg";
+import likes from "../../../assets/likes.svg";
+import comments from "../../../assets/comments.svg";
+import shares from "../../../assets/shares.svg";
+
+//component import
+
+
+// get posts from sanity
+import { getAllPosts } from "../../../sanity/api.js";
+import { urlForImage } from "../../../sanity/urlForImage.js";
+
+const { posts, categories } = await getAllPosts();
+---
+
+<div class="hidden lg:flex flex-col w-full">
+  <!-- News Header  -->
+  <div
+    class="flex flex-col md:flex-row lg:flex-row w-full bg-card md:justify-between md:items-center border-y border-border gap-[30px] py-[40px] px-[16px] md:py-[60px] md:px-[80px]"
+  >
+    <div class="flex flex-col gap-[10px]">
+      <p
+        class="text-title py-[4px] px-[8px] rounded-md bg-button w-fit font-inter text-sm"
+      >
+        A Knowledge Treasure Trove
+      </p>
+      <h1 class="text-3xl text-title font-kumbh-sans">
+        Explore Akera's In-Depth Blog Posts
+      </h1>
+    </div>
+    <button
+      class="flex bg-background text-desc py-[14px] px-[20px] gap-[4px] border rounded-md border-border font-inter justify-center hover:bg-card"
+    >
+      View All News
+      <Image src={vector2} alt="vector2" class="mt-[6px] w-[13.75px]" />
+    </button>
+  </div>
+
+  <!-- categories filtering -->
+  <ul
+    class="flex py-[20px] px-[16px] md:py-[40px] md:px-[80px] gap-[14px] border-b border-border overflow-hidden"
+  >
+    <!-- Add 'All' category button -->
+    <li
+      class="flex justify-center items-center text-title py-[18px] px-[16px] md:py-[24px] md:px-[20px] border border-border rounded-md hover:bg-card cursor-pointer category-item w-full"
+      data-category="All"
+    >
+      All
+    </li>
+    {
+      categories.map((category) => (
+        <li
+          class="flex justify-center items-center text-title py-[18px] px-[16px] md:py-[24px] md:px-[20px] border border-border rounded-md hover:bg-card cursor-pointer category-item w-full"
+          data-category={category.title}
+        >
+          {category.title}
+        </li>
+      ))
+    }
+  </ul>
+
+  <!-- News list -->
+  <ul class="flex flex-col font-inter" id="post-list">
+    {
+      posts.map((post) => (
+        <li
+          class="flex flex-col md:flex-row py-[40px] px-[16px] border-b border-border md:py-[60px] md:px-[80px] gap-[40px] items-start w-full post-item"
+          data-category={post.categories?.[0]?.title}
+        >
+          <div class="flex items-center gap-[10px] w-full md:w-1/6 ">
+            {post.author.image && (
+              <img
+                src={urlForImage(post.author.image).url()}
+                width="50px"
+                class="rounded-full"
+              />
+            )}
+            <div class="flex flex-col flex-grow">
+              <h1 class="text-title">{post.author.name}</h1>
+              <p class="text-desc">{post.categories?.[0]?.title}</p>
+            </div>
+            <a
+              href={`/posts/${post.slug.current}`}
+              class="flex md:hidden text-desc py-[14px] px-[20px] gap-[4px] border border-border rounded-md hover:bg-card ml-auto"
+            >
+              Read More
+              <Image src={vector2} alt="vect" />
+            </a>
+          </div>
+          <div class="flex flex-col md:flex-row gap-[20px] md:gap-[40px] items-center w-full">
+            <div class="flex flex-col gap-[20px] md:flex-grow">
+              <h1 class="text-desc">
+                {new Date(post.publishedAt).toLocaleDateString()}
+              </h1>
+              <div class="flex flex-col gap-[6px] text-desc ">
+                <h1 class="text-lg text-title">{post.title}</h1>
+                <p
+                >{post.contentSections[0].description}
+
+                </p>
+              </div>
+              <div class="flex gap-[8px]">
+                <Image src={likes} alt="likes" />
+                <Image src={comments} alt="comments" />
+                <Image src={shares} alt="shares" />
+              </div>
+            </div>
+            <a
+              href={`/posts/${post.slug.current}`}
+              class="flex text-desc py-[14px] px-[20px] gap-[4px] border border-border rounded-md hover:bg-card w-48 md:w-72 justify-center "
+            >
+              Read More
+              <Image src={vector2} alt="vect" />
+            </a>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // get all category name
+    const categoryItems = document.querySelectorAll(".category-item");
+    // Get all post items
+    const postItems = document.querySelectorAll(".post-item");
+
+    // Add click event listeners to each category item
+    categoryItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        // Get the selected category
+        const category = item.getAttribute("data-category");
+        // Loop through each post item and filter based on the selected category
+        postItems.forEach((post) => {
+          if (
+            post.getAttribute("data-category") === category ||
+            category === "All"
+          ) {
+            post.style.display = "flex";
+          } else {
+            post.style.display = "none";
+          }
+        });
+      });
+    });
+  });
+</script>

@@ -1,0 +1,135 @@
+---
+import { Image } from "astro:assets";
+
+import Icon1 from "../../../assets/Icon1.svg";
+import Icon2 from "../../../assets/Icon2.svg";
+---
+
+<div class="lg:hidden flex flex-col w-full">
+  <div
+    class="flex flex-col bg-card border-y border-border py-[40px] px-[16px] md:p-[80px] gap-[10px] justify-start"
+  >
+    <h1
+      class="text-title py-[4px] px-[8px] rounded-md bg-button max-w-[150px] font-inter text-sm"
+    >
+      Unlock the Power of
+    </h1>
+    <h1 class="text-3xl text-title font-kumbh-sans">Akera AI Features</h1>
+  </div>
+
+  <div
+    class="flex flex-col md:flex-row px-[16px] md:px-[80px] md:gap-[60px] border-b border-border"
+  >
+    <div
+      class="flex flex-col gap-[20px] md:gap-[40px] py-[50px] md:py-[80px] pr-[20px]"
+    >
+      <Image src={Icon1} alt="icon1" />
+      <div class="flex flex-col gap-[6px] md:gap-[10px]">
+        <h1 class="text-title text-3xl font-kumbh-sans">
+          Future Technology Blog
+        </h1>
+        <p class="text-desc md:max-w-[400px] font-inter">
+          Stay informed with our blog section dedicated to future technology.
+        </p>
+      </div>
+    </div>
+    <div
+      class="flex flex-col py-[30px] px-[16px] md:py-[60px] md:pl-[60px] gap-[10px] md:gap-[20px] flex-1 border-t md:border-l border-border font-inter"
+    >
+      <div class="flex flex-col md:flex-row gap-[10px] md:gap-[20px]">
+        <div
+          class="bg-card flex flex-col p-[24px] md:p-[30px] rounded-md border border-border gap-[4px] md:gap-[16px] flex-1"
+        >
+          <h1 class="text-title text-xl">Quantity</h1>
+          <p class="text-desc">
+            Over 1,000 articles on emerging tech trends and breakthroughs.
+          </p>
+        </div>
+        <div
+          class="bg-card flex flex-col p-[24px] md:p-[30px] rounded-md border border-border gap-[4px] md:gap-[16px] flex-1"
+        >
+          <h1 class="text-title text-xl">Variety</h1>
+          <p class="text-desc">
+            Articles cover fields like AI, robotics, biotechnology, and more.
+          </p>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row gap-[10px] md:gap-[20px]">
+        <div
+          class="bg-card flex flex-col p-[24px] md:p-[30px] rounded-md border border-border gap-[4px] md:gap-[16px] flex-1"
+        >
+          <h1 class="text-title text-xl">Frequency</h1>
+          <p class="text-desc">
+            Fresh content added daily to keep you up to date.
+          </p>
+        </div>
+        <div
+          class="bg-card flex flex-col p-[24px] md:p-[30px] rounded-md border border-border gap-[4px] md:gap-[16px] flex-1"
+        >
+          <h1 class="text-title text-xl">Authoritative</h1>
+          <p class="text-desc">
+            Written by our team of tech experts and industry professionals.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="flex flex-col md:flex-row px-[16px] md:px-[80px] md:gap-[60px] border-b border-border"
+  >
+    <div
+      class="flex flex-col gap-[20px] md:gap-[40px] py-[50px] md:py-[80px] pr-[20px]"
+    >
+      <Image src={Icon2} alt="icon1" />
+      <div class="flex flex-col gap-[6px] md:gap-[10px]">
+        <h1 class="text-title text-3xl font-kumbh-sans">
+          Research Insights Blogs
+        </h1>
+        <p class="text-desc md:max-w-[400px] font-inter">
+          Dive deep into future technology concepts with our research <br />
+          section.
+        </p>
+      </div>
+    </div>
+    <div
+      class="flex flex-col py-[30px] px-[16px] md:py-[60px] md:pl-[60px] gap-[10px] md:gap-[20px] flex-1 border-t md:border-l border-border font-inter"
+    >
+      <div class="flex flex-col md:flex-row gap-[10px] md:gap-[20px]">
+        <div
+          class="bg-card flex flex-col p-[30px] rounded-md border border-border gap-[16px] flex-1"
+        >
+          <h1 class="text-title text-xl">Depth</h1>
+          <p class="text-desc">
+            500+ research articles for in-depth understanding.
+          </p>
+        </div>
+        <div
+          class="bg-card flex flex-col p-[30px] rounded-md border border-border gap-[16px] flex-1"
+        >
+          <h1 class="text-title text-xl">Graphics</h1>
+          <p class="text-desc">
+            Visual aids and infographics to enhance comprehension.
+          </p>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row gap-[10px] md:gap-[20px]">
+        <div
+          class="bg-card flex flex-col p-[30px] rounded-md border border-border gap-[16px] flex-1"
+        >
+          <h1 class="text-title text-xl">Trends</h1>
+          <p class="text-desc">
+            Explore emerging trends in future technology research.
+          </p>
+        </div>
+        <div
+          class="bg-card flex flex-col p-[30px] rounded-md border border-border gap-[16px] flex-1"
+        >
+          <h1 class="text-title text-xl">Contributors</h1>
+          <p class="text-desc">
+            Contributions from tech researchers and academics.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

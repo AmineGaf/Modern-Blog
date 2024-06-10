@@ -1,0 +1,132 @@
+---
+import { Image } from "astro:assets";
+
+import avatar1 from "../../../assets/avatar1.svg";
+import avatar2 from "../../../assets/avatar2.svg";
+import avatar3 from "../../../assets/avatar3.svg";
+import avatar4 from "../../../assets/avatar4.svg";
+import avatar5 from "../../../assets/avatar5.svg";
+import avatar6 from "../../../assets/avatar6.svg";
+
+import star from "../../../assets/star.svg";
+import vector2 from "../../../assets/vector2.svg";
+
+// Data array for avatars
+const avatarsData = [
+  [
+    {
+      id: 1,
+      name: "Sarah Thompson",
+      location: "San Francisco, USA",
+      image: avatar1,
+      stars: 5,
+      text: "The ebooks on AI in education have been a game-changer for my research. They provide in-depth insights and case studies that are invaluable for staying updated.",
+    },
+    {
+      id: 2,
+      name: "Raj Patel",
+      location: "Mumbai, India",
+      image: avatar2,
+      stars: 5,
+      text: "The whitepapers on renewable energy strategies have greatly influenced my work. They offer detailed data and analysis.",
+    },
+    {
+      id: 3,
+      name: "Emily Adams",
+      location: "London, UK",
+      image: avatar3,
+      stars: 5,
+      text: "The AI in healthcare reports have been an essential resource for our hospital. They highlight the latest innovations and best practices, improving patient care.",
+    },
+  ],
+  [
+    {
+      id: 4,
+      name: "Alan Jackson",
+      location: "Houston, USA",
+      image: avatar4,
+      stars: 5,
+      text: "The reports on space mining prospects have fueled my passion for space exploration. They provide a comprehensive view.",
+    },
+    {
+      id: 5,
+      name: "Jessica Miller",
+      location: "Boston, USA",
+      image: avatar5,
+      stars: 5,
+      text: "The research papers on genomic breakthroughs have been a goldmine of information. They've shaped the direction of my research in genomics.",
+    },
+    {
+      id: 6,
+      name: "Diego Lopez",
+      location: "Barcelona, Spain",
+      image: avatar6,
+      stars: 5,
+      text: "The ebooks on renewable energy strategies have given me the insights I needed to pivot our startup toward sustainability.",
+    },
+  ],
+];
+---
+
+<div class="flex flex-col w-full">
+  <div
+    class="flex flex-col md:flex-row lg:flex-row w-full bg-card md:justify-between md:items-center border-y border-border gap-[30px] py-[40px] px-[16px] md:p-[70px]"
+  >
+    <div class="flex flex-col gap-[10px] ">
+      <p
+        class="text-title py-[4px] px-[8px] rounded-md bg-button max-w-[170px] font-inter text-sm"
+      >
+        What Our Readers Say
+      </p>
+      <h1 class="text-3xl text-title font-kumbh-sans">
+        Real Words from Real Readers
+      </h1>
+    </div>
+    <button
+      class="flex bg-background text-desc py-[14px] px-[20px] gap-[4px] border rounded-md border-border font-inter justify-center"
+    >
+      View All Testimonials
+      <Image src={vector2} alt="vector2" class="mt-[6px] w-[13.75px]" />
+    </button>
+  </div>
+  <div class="flex flex-col font-inter">
+    {
+      avatarsData.map((row, rowIndex) => (
+        <div
+          class={`md:flex flex-col md:flex-row px-[20px] gap-[20px] md:gap-[50px] md:border-b border-border ${
+            rowIndex === 1 ? "hidden" : "flex"
+          }`}
+        >
+          {row.map((avatar, columnIndex) => (
+            <div
+              class={`flex flex-col gap-[20px] items-center border-b border-border ${columnIndex !== row.length - 1 ? "md:border-r border-border md:pr-[50px]" : ""}`}
+            >
+              <ul class="flex flex-col py-[40px] md:py-[80px] gap-[40px] justify-center items-center">
+                <li class="flex gap-[12px] items-center">
+                  <Image src={avatar.image} alt={`avatar-${avatar.id}`} />
+                  <div class="flex flex-col gap-[2px]">
+                    <h1 class="text-title">{avatar.name}</h1>
+                    <p class="text-[#666666]">{avatar.location}</p>
+                  </div>
+                </li>
+                <li class="w-full relative flex flex-col justify-center items-center bg-card p-[20px] pt-[30px] md:py-[20px] md:px-[60px] border rounded-md border-border">
+                  <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 flex py-[10px] px-[16px] gap-[7px] border rounded-full border-border bg-background">
+                    {/* renders star images with based on the number of stars provided in avatars data */}
+                    {Array.from({ length: avatar.stars }).map(
+                      (_, starIndex) => (
+                        <Image src={star} alt={`star-${starIndex}`} />
+                      )
+                    )}
+                  </div>
+                  <div class="text-title text-sm text-center mt-[30px] max-w-lg">
+                    {avatar.text}
+                  </div>
+                </li>
+              </ul>
+            </div>
+          ))}
+        </div>
+      ))
+    }
+  </div>
+</div>

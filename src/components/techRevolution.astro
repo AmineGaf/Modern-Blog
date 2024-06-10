@@ -1,0 +1,104 @@
+---
+import { Image } from "astro:assets";
+
+
+import logo from "../assets/logo.svg";
+import button from "../assets/Button.svg";
+
+---
+
+
+
+<div
+      class="flex flex-col py-[40px] px-[16px] gap-[40px] md:p-[80px] md:gap-[50px] lg:gap-[100px] lg:py-[120px] lg:px-[162px] border-y border-border bg-card"
+    >
+      <div
+        class="flex flex-wrap md:flex-nowrap gap-[20px] md:gap-[60px] items-start md:items-center"
+      >
+        <div class="flex items-center gap-10">
+          <div class="flex-shrink-0">
+            <Image
+              src={logo}
+              alt="logo"
+              class="w-[60px] h-[60px] md:w-[120px] md:h-[120px]"
+            />
+          </div>
+
+          <div class="flex flex-col md:hidden">
+            <p
+              class="text-title bg-[#333333] rounded-sm py-[4px] px-[8px] max-w-60"
+            >
+              Learn, Connect, and Innovate
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-[20px] font-inter md:pl-[20px]">
+          <div class="hidden md:flex">
+            <p
+              class="text-title bg-[#333333] rounded-sm py-[4px] px-[8px] max-w-60"
+            >
+              Learn, Connect, and Innovate
+            </p>
+          </div>
+
+          <h1 class="text-4xl font-kumbh-sans text-title">
+            Be Part of the Future Tech Revolution
+          </h1>
+
+          <p class="text-paragraph">
+            Immerse yourself in the world of future technology. Explore our
+            comprehensive resources, connect with fellow tech enthusiasts, and
+            drive innovation in the industry. Join a dynamic community of
+            forward-thinkers.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="flex flex-col md:flex-row gap-[10px] lg:gap-[20px] p-[10px] lg:p-[20px] border rounded-md border-border bg-background font-inter"
+      >
+        <div
+          class="flex flex-col p-[24px] md:p-[30px] lg:p-[40px] gap-[10px] md:gap-[16px] lg:gap-[20px] rounded-md bg-card"
+        >
+          <div class="gap-[16px] flex justify-between items-center">
+            <h1 class="text-title">Resource Access</h1>
+            <button>
+              <Image src={button} alt="button" />
+            </button>
+          </div>
+          <p class="text-desc">
+            Visitors can access a wide range of resources, including ebooks,
+            whitepapers, reports.
+          </p>
+        </div>
+        <div
+          class="flex flex-col p-[24px] md:p-[30px] lg:p-[40px] gap-[10px] md:gap-[16px] lg:gap-[20px] rounded-md bg-card"
+        >
+          <div class="gap-[16px] flex justify-between items-center">
+            <h1 class="text-title">Community Forum</h1>
+            <button>
+              <Image src={button} alt="button" />
+            </button>
+          </div>
+          <p class="text-desc">
+            Join our active community forum to discuss industry trends and
+            collaborate with peers.
+          </p>
+        </div>
+        <div
+          class="flex flex-col p-[24px] md:p-[30px] lg:p-[40px] gap-[10px] md:gap-[16px] lg:gap-[20px] rounded-md bg-card"
+        >
+          <div class="gap-[16px] flex justify-between items-center">
+            <h1 class="text-title">Tech Events</h1>
+            <button>
+              <Image src={button} alt="button" />
+            </button>
+          </div>
+          <p class="text-desc">
+            Stay updated on upcoming tech events, webinars and conferences to
+            enhance your knowledge.
+          </p>
+        </div>
+      </div>
+    </div>

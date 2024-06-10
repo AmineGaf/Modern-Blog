@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+
+import Layout from "../layouts/Layout.astro";
+
+// components import
+import Navbar from "../components/navbar.astro";
+import Footer from "../components/footer.astro";
+
+// ui import
+import AiFeatures from "./home/components/aiFeatures.astro";
+import ReaderSection from "./home/components/readerSection.astro";
+import TechRevolution from "../components/techRevolution.astro";
+import HomeHeader from "./home/components/homeHeader.astro";
+import Blogposts from "./home/components/blogPosts.astro";
+
+// assets import
+import vector2 from "../assets/vector2.svg";
+---
+
+<Layout title="Akera.ai">
+  <main
+    class="bg-background min-h-screen flex flex-col md:px-[32px] items-center"
+  >
+    <div
+      class="flex items-center gap-[10px] pt-[40px] md:py-[14px] pb-[14px] px-[24px]"
+    >
+      <p class="text-desc cursor-pointer font-inter hover:underline">
+        Subscribe to our Newsletter For Blogs and Resources
+      </p>
+      <Image src={vector2} alt="vector2" class="w-[12px] mt-1" />
+    </div>
+    <Navbar />
+
+    <!-- first Section -->
+    <HomeHeader />
+
+    <!-- Akera Ai features -->
+    <AiFeatures />
+
+    <!-- Blog posts -->
+    <Blogposts />
+
+    <!-- Reader Section -->
+    <ReaderSection />
+
+    <!-- Future tech revolution -->
+    <TechRevolution />
+
+    <!-- Footer -->
+    <Footer />
+  </main>
+</Layout>

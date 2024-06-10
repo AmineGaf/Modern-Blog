@@ -1,0 +1,195 @@
+---
+import { getAllPosts } from "../../sanity/api";
+import { urlForImage } from "../../sanity/urlForImage.js";
+
+import { Image } from "astro:assets";
+import NavBar from "../../components/navbar.astro";
+import Footer from "../../components/footer.astro";
+import TechRevolution from "../../components/techRevolution.astro";
+
+import vector2 from "../../assets/vector2.svg";
+import likes from "../../assets/likes.svg";
+import shares from "../../assets/shares.svg";
+import views from "../../assets/views.svg";
+import progressivePolitics from "../../assets/progressivePolitics.svg";
+import techGiant from "../../assets/techGiant.svg";
+import covid from "../../assets/covid.svg";
+import sendIcon from "../../assets/sendIcon.svg";
+import likeIcon from "../../assets/likeIcon.svg";
+
+export const prerender = true;
+
+const SimilarNews = [
+  {
+    img: progressivePolitics,
+    title: "A Decisive Victory for Progressive Policies",
+    category: "Politics",
+    likes: 2.2,
+    shares: 60,
+  },
+  {
+    img: techGiant,
+    title: "A Decisive Victory for Progressive Policies",
+    category: "Politics",
+    likes: 6,
+    shares: 92,
+  },
+  {
+    img: covid,
+    title: "A Decisive Victory for Progressive Policies",
+    category: "Politics",
+    likes: 10,
+    shares: 124,
+  },
+];
+export async function getStaticPaths() {
+  const {posts} = await getAllPosts();
+
+  return posts.map((post) => ({
+    params: { slug: post.slug.current },
+    props: { post },
+  }));
+}
+const { post } = Astro.props;
+---
+
+<div class="bg-background min-h-screen flex flex-col md:px-[32px] items-center">
+  <div
+    class="flex items-center gap-[10px] pt-[40px] md:py-[14px] pb-[14px] px-[24px]"
+  >
+    <p class="text-desc cursor-pointer font-inter hover:underline">
+      Subscribe to our Newsletter For Blogs and Resources
+    </p>
+    <Image src={vector2} alt="vector2" class="w-[12px] mt-1" />
+  </div>
+  <NavBar />
+
+  <div class="relative flex justify-center text-center">
+    <img
+      class="w-[495px] md:w-[1440px] md:h-[1000px]"
+      src={urlForImage(post.mainImage).url()}
+    />
+    
+    <h1
+      class="absolute text-title text-4xl font-semibold md:text-5xl bottom-14"
+    >
+      {post.title}
+    </h1>
+  </div>
+  <div class="flex flex-col-reverse md:flex-row">
+    <div class="flex flex-col max-w-[1000px]">
+      
+      <div class="flex flex-col text-desc p-[60px] pl-[80px] gap-[6px] border-y border-border">
+        <h1 class="text-title text-xl">{post.contentSections[0].name}</h1>
+        <!-- <PortableText portableText={post.contentSections[0].description} /> -->
+        <p>{post.contentSections[0].description}</p>
+      </div>
+      <div class="flex text-desc flex-col p-[60px] pl-[80px] gap-[25px] lg:p-[80px] lg:pl-[162px] lg:gap-[30px] border-b border-border">
+        {post.contentSections.slice(1).map((section) => (
+          <div class="flex flex-col gap-4">
+            <h1 class="text-title text-xl">{section.name}</h1>
+            <p>
+              {section.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div class="flex flex-col border-l border-b border-border">
+      <div
+        class="flex py-[40px] pr-[80px] pl-[60px] gap-[14px] border-t border-border"
+      >
+        <Image src={likes} alt="likes" />
+        <Image src={views} alt="views" />
+        <Image src={shares} alt="shares" />
+      </div>
+      <div
+        class="flex flex-col py-[40px] px-[24px] md:py-[60px] md:px-[80px] gap-[40px] border-t border-border"
+      >
+        <div class="flex flex-col gap-[30px] md:gap-[20px]">
+          <div class="flex gap-[50px]">
+            <div class="flex flex-col gap-[6px]">
+              <p class="text-desc">Publication Date</p>
+              <h1 class="text-title">
+                {new Date(post.publishedAt).toLocaleDateString()}
+              </h1>
+            </div>
+            <div class="flex flex-col gap-[6px]">
+              <p class="text-desc">Category</p>
+              <h1 class="text-title">{post.categories?.[0]?.title}</h1>
+            </div>
+          </div>
+          <div class="flex gap-[20px]">
+            <div class="flex flex-col gap-[6px]">
+              <p class="text-desc">Reading Time</p>
+              <h1 class="text-title">10 Min</h1>
+            </div>
+            <div class="flex flex-col gap-[6px]">
+              <p class="text-desc">Author Name</p>
+              <h1 class="text-title">{post.author.name}</h1>
+            </div>
+          </div>
+          <div class="flex flex-col gap-[14px]">
+            <h1 class="text-desc">Table of contents</h1>
+            <ul class="flex flex-col bg-card list-disc text-title p-[18px] gap-[16px] rounded-md">
+              {
+                post.contentSections.map((section) => (
+                  <li>{section.name}</li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="flex flex-col pt-[40px] md:py-[60px] md:px-[80px] gap-[40px] border-t border-border"
+  >
+    <div class="flex justify-between items-center">
+      <h1 class="text-title text-lg">Similar News</h1>
+      <button
+        class="flex py-[14px] px-[20px] gap-[4px] border rounded-md border-border text-desc hover:bg-card"
+      >
+        View All News
+        <Image src={vector2} alt="vector2" />
+      </button>
+    </div>
+    <ul class="flex flex-col md:flex-row gap-[30px]">
+      {
+        SimilarNews.map((similarNew) => (
+          <li class="flex flex-col gap-[16px]">
+            <Image
+              src={similarNew.img}
+              alt={similarNew.title}
+              class="w-full h-auto"
+            />
+            <div class="flex flex-col gap-[4px]">
+              <h3 class="text-title">{similarNew.title}</h3>
+              <p class="text-desc">{similarNew.category}</p>
+            </div>
+            <div class="flex justify-between items-center text-desc">
+              <div class="flex gap-[8px]">
+                <div class="flex py-[6px] px-[14px] gap-[4px]  bg-card rounded-full hover:bg-background cursor-pointer border border-border">
+                  <Image src={likeIcon} alt={`${similarNew.likes} likes`} />
+                  {similarNew.likes}k
+                </div>
+                <div class="flex py-[6px] px-[14px] gap-[4px]  bg-card rounded-full hover:bg-background cursor-pointer border border-border">
+                  <Image src={sendIcon} alt={`${similarNew.shares} likes`} />
+                  {similarNew.shares}
+                </div>
+              </div>
+              <button class="flex items-center justify-center py-[14px] px-[40px] gap-[4px] border rounded-lg border-border hover:bg-card ">
+                Read More
+                <Image src={vector2} alt="read" />
+              </button>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <TechRevolution />
+  <Footer />
+</div>
