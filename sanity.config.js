@@ -1,28 +1,28 @@
-import { defineConfig } from "sanity";
-import { structureTool } from "sanity/structure";
+import { defineConfig } from 'sanity';
+import { structureTool } from 'sanity/structure';
 
 export default defineConfig({
-  name: "project-name",
-  title: "Project Name",
-  projectId: "xdm6n7l4",
-  dataset: "production",
+  name: 'project-name',
+  title: 'Project Name',
+  projectId: 'xdm6n7l4',
+  dataset: 'production',
   plugins: [structureTool()],
   schema: {
     types: [
       {
-        name: "post",
-        type: "document",
-        title: "Post",
+        name: 'post',
+        type: 'document',
+        title: 'Post',
         fields: [
           {
-            name: "title",
-            type: "string",
-            title: "Title",
+            name: 'title',
+            type: 'string',
+            title: 'Title',
           },
           {
-            name: "slug",
-            type: "slug",
-            title: "Slug",
+            name: 'slug',
+            type: 'slug',
+            title: 'Slug',
           },
           {
             name: 'mainImage',
@@ -33,23 +33,23 @@ export default defineConfig({
             },
           },
           {
-            name: "author",
-            type: "reference",
-            to: [{ type: "author" }],
+            name: 'author',
+            type: 'reference',
+            to: [{ type: 'author' }],
           },
           {
-            name: "categories",
-            type: "array",
-            of: [{ type: "reference", to: [{ type: "category" }] }],
+            name: 'categories',
+            type: 'array',
+            of: [{ type: 'reference', to: [{ type: 'category' }] }],
           },
           {
-            name: "publishedAt",
-            title: "Published at",
-            type: "datetime",
+            name: 'publishedAt',
+            title: 'Published at',
+            type: 'datetime',
           },
           {
-            title:'Content Sections',
-            name:'contentSections',
+            title: 'Content Sections',
+            name: 'contentSections',
             type: 'array',
             of: [
               {
@@ -67,46 +67,46 @@ export default defineConfig({
                   },
                 ],
               },
-            ]
-          }
-        ],
-      },
-      {
-        name: "author",
-        type: "document",
-        title: "Author",
-        fields: [
-          {
-            name: "name",
-            type: "string",
-            title: "Name",
-          },
-          {
-            name: "slug",
-            type: "slug",
-            title: "Slug",
-          },
-          {
-            name: "image",
-            type: "image",
-            title: "Image",
+            ],
           },
         ],
       },
       {
-        name: "category",
-        type: "document",
-        title: "Category",
+        name: 'author',
+        type: 'document',
+        title: 'Author',
         fields: [
           {
-            name: "title",
-            type: "string",
-            title: "Title",
+            name: 'name',
+            type: 'string',
+            title: 'Name',
           },
           {
-            name: "slug",
-            type: "slug",
-            title: "Slug",
+            name: 'slug',
+            type: 'slug',
+            title: 'Slug',
+          },
+          {
+            name: 'image',
+            type: 'image',
+            title: 'Image',
+          },
+        ],
+      },
+      {
+        name: 'category',
+        type: 'document',
+        title: 'Category',
+        fields: [
+          {
+            name: 'title',
+            type: 'string',
+            title: 'Title',
+          },
+          {
+            name: 'slug',
+            type: 'slug',
+            title: 'Slug',
           },
         ],
       },

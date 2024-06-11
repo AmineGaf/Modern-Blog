@@ -8,11 +8,11 @@ import Navbar from "../components/navbar.astro";
 import Footer from "../components/footer.astro";
 
 // ui import
-import AiFeatures from "./home/components/aiFeatures.astro";
-import ReaderSection from "./home/components/readerSection.astro";
-import TechRevolution from "../components/techRevolution.astro";
-import HomeHeader from "./home/components/homeHeader.astro";
-import Blogposts from "./home/components/blogPosts.astro";
+import AiFeatures from "./home/components/ai-features.astro";
+import ReaderSection from "./home/components/reader-section.astro";
+import TechRevolution from "../components/tech-revolution.astro";
+import HomeHeader from "./home/components/home-header.astro";
+import BlogPosts from "./home/components/blog-posts.astro";
 
 // assets import
 import vector2 from "../assets/vector2.svg";
@@ -32,22 +32,17 @@ import vector2 from "../assets/vector2.svg";
     </div>
     <Navbar />
 
-    <!-- first Section -->
     <HomeHeader />
 
-    <!-- Akera Ai features -->
     <AiFeatures />
 
-    <!-- Blog posts -->
-    <Blogposts />
+    <BlogPosts />
 
-    <!-- Reader Section -->
     <ReaderSection />
 
-    <!-- Future tech revolution -->
     <TechRevolution />
 
-    <!-- Footer -->
     <Footer />
   </main>
+
 </Layout>

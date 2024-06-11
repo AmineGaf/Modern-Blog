@@ -2,7 +2,8 @@
 import { Image } from "astro:assets";
 import logo from "../assets/logo.svg";
 import menu from "../assets/menu.png";
-import closeMenu from "../assets/close-menu.png"; // You can use an image for the close button if needed
+
+import {ROUTES} from "../constants/routes-data";
 ---
 
 <nav
@@ -13,10 +14,13 @@ import closeMenu from "../assets/close-menu.png"; // You can use an image for th
     <p class="text-title">Akera.ai</p>
   </div>
   <div class="hidden md:flex text-paragraph md:flex-row md:items-center md:gap-8 md:space-x-0 md:py-0" id="menu">
-    <a href="/" class="px-[24px] py-[14px] border-0 hover:border-1 hover:border-border hover:bg-background rounded-md">Home</a>
-    <a href="/news" class="px-[24px] py-[14px] border-0 hover:border-1 hover:border-border hover:bg-background rounded-md">News</a>
-    <a href="/podcasts" class="px-[24px] py-[14px] border-0 hover:border-1 hover:border-border hover:bg-background rounded-md">Podcasts</a>
-    <a href="/resources" class="px-[24px] py-[14px] border-0 hover:border-1 hover:border-border hover:bg-background rounded-md">Resources</a>
+    {ROUTES.map((route) => 
+      <a 
+        href={route.link}
+        class="px-[24px] py-[14px] border-0 hover:border-1 hover:border-border hover:bg-background rounded-md"
+      >{route.name}</a>
+    )}
+    
   </div>
   <button class="hidden md:flex px-[14px] py-[10px] bg-primary rounded-md">Contact Us</button>
   <button class="md:hidden text-background" id="menu-button">
@@ -25,29 +29,12 @@ import closeMenu from "../assets/close-menu.png"; // You can use an image for th
 </nav>
 
 <div class="hidden flex-col items-center bg-card w-full md:hidden text-paragraph space-y-2 p-4 " id="mobile-menu">
-  <a href="/" class="block w-full text-center px-[24px] py-[14px] border-0 hover:border-1 hover:border-border hover:bg-background rounded-md">Home</a>
-  <a href="/news" class="block w-full text-center px-[24px] py-[14px] border-0 hover:border-1 hover:border-border hover:bg-background rounded-md">News</a>
-  <a href="/podcasts" class="block w-full text-center px-[24px] py-[14px] border-0 hover:border-1 hover:border-border hover:bg-background rounded-md">Podcasts</a>
-  <a href="/resources" class="block w-full text-center px-[24px] py-[14px] border-0 hover:border-1 hover:border-border hover:bg-background rounded-md">Resources</a>
-  <a href="/contact" class="block w-full text-center px-[24px] py-[14px] border-0 hover:border-1 hover:border-border hover:bg-background rounded-md">Contact Us</a>
+  {ROUTES.map((route) => 
+  <a href={route.link} class="block w-full text-center px-[24px] py-[14px] border-0 hover:border-1 hover:border-border hover:bg-background rounded-md" >{route.name}</a>
+  )}
   <button class="block w-full text-center px-[24px] py-[14px] border-0 hover:border-1 hover:border-border hover:bg-background rounded-md" id="close-menu-button">Close</button>
 </div>
 
 <!-- Mobile Menu Script -->
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const menuButton = document.getElementById('menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const closeMenuButton = document.getElementById('close-menu-button');
-
-    // Toggle mobile menu visibility
-    menuButton.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-
-    // Close mobile menu
-    closeMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.add('hidden');
-    });
-  });
+<script src="./js/toggle-menu">
 </script>

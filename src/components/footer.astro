@@ -1,63 +1,37 @@
 ---
 import { Image } from "astro:assets";
-import vector2 from "../assets/vector2.svg";
+
 
 import twitter from "../assets/twitter.svg";
 import medium from "../assets/medium.svg";
 import linkedin from "../assets/linkedin.svg";
 
+import { FOOTER_DATA } from "../constants/footer-data";
 
-const footerData = [
-  {
-    title: "Home",
-    links: ["Features", "Blogs", "Resources", "Testimonials", "Contact Us", "Newsletter Us"],
-  },
-  {
-    title: "News",
-    links: ["Trending Stories", "Featured Videos", "Technology", "Health", "Politics", "Environment"],
-  },
-  {
-    title: "Blogs",
-    links: ["Quantum Computing", "AI Ethics", "Space Exploration", "Biotechnology", "Renewable Energy", "Biohacking"],
-  },
-  {
-    title: "Podcasts",
-    links: ["AI Revolution", "TechTalk AI", "AI Conversations"],
-  },
-  {
-    title: "Resources",
-    links: [
-      { name: "Whitepapers", icon: vector2 },
-      { name: "Ebooks", icon: vector2 },
-      { name: "Reports", icon: vector2 },
-      { name: "Research Papers", icon: vector2 },
-    ],
-  },
-];
 
 ---
 
 <div class="flex flex-col px-[16px] md:w-full">
   <div class="flex flex-wrap md:flex-row  md:justify-center gap-[40px] md:gap-[80px]  py-[20px] md:py-[80px] border-b border-border font-inter">
-    {footerData.map((section) => (
+    {FOOTER_DATA.map((section) => (
       <div class="flex flex-col gap-[16px] md:gap-[36px] text-lg">
         <h1 class="text-title">{section.title}</h1>
-        <div class="flex flex-col gap-[18px] text-[#666666]">
+        <div class="flex flex-col gap-[18px] text-secondary">
           {section.title === "Resources"
-            // Resources section with different design
             ? section.links.map((link) => (
                 <button class="flex items-center py-[8px] px-[14px] md:py-[10px] md:px-[16px] gap-[4px] md:gap-[10px] border border-border rounded-md md:rounded-lg hover:bg-card mr-auto">
                   {link.name}
                   <Image src={link.icon} alt="vector" />
                 </button>
               ))
-            : section.links.map((link) => <p class="cursor-pointer hover:text-title transition">{link}</p>)}
+            : section.links.map((link) => 
+            <p class="cursor-pointer hover:text-title transition">{link}</p>)}
         </div>
       </div>
     ))}
   </div>
 
-  <div class="flex flex-col justify-center md:flex-row md:justify-between items-center py-[24px] gap-[20px] text-[#666666] font-inter">
+  <div class="flex flex-col justify-center md:flex-row md:justify-between items-center py-[24px] gap-[20px] text-secondary font-inter">
     <div class="flex gap-[4px]">
       <p>Terms & Conditions</p>
       <span class="text-border">|</span>

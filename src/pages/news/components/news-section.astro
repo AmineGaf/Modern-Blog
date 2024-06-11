@@ -13,32 +13,9 @@ import shares from "../../../assets/shares.svg";
 // get posts from sanity
 
 import { urlForImage } from "../../../sanity/urlForImage.js";
-import { sanityClient } from "sanity:client";
+import { getAllPosts } from "../../../sanity/api";
 
-const {posts, categories} = await sanityClient.fetch(`{
-    "posts": *[_type == "post"]{
-      title,
-      slug,
-      mainImage,
-      publishedAt,
-      author->{
-        name,
-        image
-      },
-      categories[]->{
-        title
-      },
-      "contentSections": contentSections[]{
-        name,
-        description
-      }
-    },
-    "categories": *[_type == "category"]{
-      title
-    }
-  }`);
-
-
+const {posts, categories} = await getAllPosts();
 ---
 
 <div class="flex flex-col w-full">
