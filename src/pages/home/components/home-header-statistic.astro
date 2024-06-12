@@ -1,10 +1,17 @@
 ---
-const {stat, index} = Astro.props;
+const { stat, index } = Astro.props;
 ---
-<li class={`flex flex-col py-[20px] px-3 md:px-[95px] lg:py-[50px] ${index === 0 ? 'border-l-0' : 'border-l border-border'}`}>
-    <div class="flex text-lg md:text-4xl gap-1 font-bold">
-      <h1 class="text-title">{stat.value}</h1>
-      <span class="text-primary">+</span>
-    </div>
-    <p class="text-desc">{stat.desc}</p>
-  </li>
+
+{
+  stat && (
+    <li
+      class={`flex flex-col py-[20px] px-3 md:px-[95px] lg:py-[50px] ${index === 0 ? 'border-l-0' : 'border-l border-border'}`}
+    >
+      <div class="flex text-lg md:text-4xl gap-1 font-bold">
+        <h1 class="text-title">{stat.value}</h1>
+        <span class="text-primary">+</span>
+      </div>
+      <p class="text-desc">{stat.desc}</p>
+    </li>
+  )
+}

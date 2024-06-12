@@ -1,8 +1,6 @@
 ---
 // component import
 
-import Footer from '../../components/footer.astro';
-
 // ui import
 import ModernViewer from './components/modern-viewer.astro';
 import NewsSection from './components/news-section.astro';
@@ -10,7 +8,6 @@ import Layout from '../../layouts/Layout.astro';
 ---
 
 <Layout title="Akera.ai">
-  <div transition:persist>
     <div
       class="flex flex-col w-full py-[32px] px-[16px] gap-[14px] md:gap-[20px] md:py-[64px]"
     >
@@ -35,5 +32,4 @@ import Layout from '../../layouts/Layout.astro';
     <NewsSection />
 
     <ModernViewer />
-  </div>
 </Layout>
