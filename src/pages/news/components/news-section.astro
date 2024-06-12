@@ -40,7 +40,7 @@ const { posts, categories } = await getAllPosts();
     class="flex py-[20px] px-[16px] md:py-[40px] md:px-[80px] gap-[14px] border-b border-border overflow-hidden"
   >
     <li
-      class="flex justify-center items-center text-xs md:text-lg text-title py-5 px-[16px] md:py-[24px] md:px-[20px] border border-border rounded-md hover:bg-card cursor-pointer category-item w-full"
+      class="flex justify-center items-center text-xs md:text-lg text-title md:py-[24px] md:px-[20px] border border-border rounded-md hover:bg-card cursor-pointer category-item w-full"
       data-category="All"
     >
       All
@@ -89,9 +89,9 @@ const { posts, categories } = await getAllPosts();
               <h1 class="text-desc">
                 {new Date(post.publishedAt).toLocaleDateString()}
               </h1>
-              <div class="flex flex-col gap-[6px] text-desc max-w-7xl ">
+              <div class="flex flex-col gap-[6px] text-desc ">
                 <h1 class="text-lg text-title">{post.title}</h1>
-                <p>{post.contentSections[0].description}</p>
+                <p class="max-w-7xl">{post.contentSections[0].description}</p>
               </div>
               <div class="flex gap-[8px]">
                 <Image src={likes} alt="likes" />

@@ -20,11 +20,11 @@ const { posts, categories } = await getAllPosts();
 <div class="hidden xxl:flex flex-col w-full">
   <!-- News Header  -->
   <div
-    class="flex flex-col md:flex-row lg:flex-row w-full bg-card md:justify-between md:items-center border-y border-border gap-[30px] py-[40px] px-[16px] md:py-[60px] md:px-[80px]"
+    class="flex  w-full bg-card justify-between items-center border-y border-border gap-[30px] py-[60px] px-[80px]"
   >
     <div class="flex flex-col gap-[10px]">
       <p
-        class="text-title py-[4px] px-[8px] rounded-md bg-button w-fit font-inter text-sm"
+        class="text-title py-[4px] px-[8px] rounded-md bg-button w-fit font-inter"
       >
         A Knowledge Treasure Trove
       </p>
@@ -42,11 +42,11 @@ const { posts, categories } = await getAllPosts();
 
   <!-- categories filtering -->
   <ul
-    class="flex py-[20px] px-[16px] md:py-[40px] md:px-[80px] gap-[14px] border-b border-border overflow-hidden"
+    class="flex py-[40px] px-[80px] gap-[14px] border-b border-border overflow-hidden"
   >
     <!-- Add 'All' category button -->
     <li
-      class="flex justify-center items-center text-title py-[18px] px-[16px] md:py-[24px] md:px-[20px] border border-border rounded-md hover:bg-card cursor-pointer category-item w-full"
+      class="flex justify-center items-center text-title py-[24px] px-[20px] border border-border rounded-md hover:bg-card cursor-pointer category-item w-full"
       data-category="All"
     >
       All
@@ -54,7 +54,7 @@ const { posts, categories } = await getAllPosts();
     {
       categories.map((category) => (
         <li
-          class="flex justify-center items-center text-title py-[18px] px-[16px] md:py-[24px] md:px-[20px] border border-border rounded-md hover:bg-card cursor-pointer category-item w-full"
+          class="flex justify-center items-center text-title py-[24px] px-[20px] border border-border rounded-md hover:bg-card cursor-pointer category-item w-full"
           data-category={category.title}
         >
           {category.title}
@@ -68,7 +68,7 @@ const { posts, categories } = await getAllPosts();
     {
       posts.map((post) => (
         <li
-          class="flex flex-col md:flex-row py-[40px] px-[16px] border-b border-border md:py-[60px] md:px-[80px] gap-[40px] items-start w-full post-item"
+          class="flex  border-b border-border py-[60px] px-[80px] gap-[40px] items-start w-full post-item"
           data-category={post.categories?.[0]?.title}
         >
           <div class="flex items-center gap-[10px] w-full md:w-1/6 ">
@@ -79,26 +79,20 @@ const { posts, categories } = await getAllPosts();
                 class="rounded-full"
               />
             )}
-            <div class="flex flex-col flex-grow">
+            <div class="flex flex-col w-[500px]">
               <h1 class="text-title">{post.author.name}</h1>
               <p class="text-desc">{post.categories?.[0]?.title}</p>
             </div>
-            <a
-              href={`/posts/${post.slug.current}`}
-              class="flex md:hidden text-desc py-[14px] px-[20px] gap-[4px] border border-border rounded-md hover:bg-card ml-auto"
-            >
-              Read More
-              <Image src={vector2} alt="vect" />
-            </a>
           </div>
-          <div class="flex flex-col md:flex-row gap-[20px] md:gap-[40px] items-center w-full">
-            <div class="flex flex-col gap-[20px] md:flex-grow">
+          <div class="flex flex-col md:flex-row :gap-[40px] items-center w-full">
+            <div class="flex gap-[20px] flex-grow">
               <h1 class="text-desc">
                 {new Date(post.publishedAt).toLocaleDateString()}
               </h1>
               <div class="flex flex-col gap-[6px] text-desc ">
-                <h1 class="text-lg text-title">{post.title}</h1>
+                <h1 class="text-lg text-title ">{post.title}</h1>
                 <p
+                class="max-w-7xl"
                 >{post.contentSections[0].description}
 
                 </p>
@@ -111,7 +105,7 @@ const { posts, categories } = await getAllPosts();
             </div>
             <a
               href={`/posts/${post.slug.current}`}
-              class="flex text-desc py-[14px] px-[20px] gap-[4px] border border-border rounded-md hover:bg-card w-48 md:w-72 justify-center "
+              class="flex text-desc py-[14px] px-[20px] gap-[4px] border border-border rounded-md hover:bg-card w-72 justify-center "
             >
               Read More
               <Image src={vector2} alt="vect" />
