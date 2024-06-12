@@ -7,39 +7,14 @@ import likes from '../../../assets/likes.svg';
 import comments from '../../../assets/comments.svg';
 import shares from '../../../assets/shares.svg';
 
-//component import
-
-// get posts from sanity
-
 import { urlForImage } from '../../../sanity/urlForImage.js';
-import { sanityClient } from 'sanity:client';
+import { getAllPosts } from '../../../sanity/api';
 
-const { posts, categories } = await sanityClient.fetch(`{
-    "posts": *[_type == "post"]{
-      title,
-      slug,
-      mainImage,
-      publishedAt,
-      author->{
-        name,
-        image
-      },
-      categories[]->{
-        title
-      },
-      "contentSections": contentSections[]{
-        name,
-        description
-      }
-    },
-    "categories": *[_type == "category"]{
-      title
-    }
-  }`);
+const { posts, categories } = await getAllPosts();
 ---
 
 <div class="flex flex-col w-full">
-  <!-- News Header  -->
+
   <div
     class="flex flex-col md:flex-row lg:flex-row w-full bg-card md:justify-between md:items-center border-y border-border gap-[30px] py-[40px] px-[16px] md:py-[60px] md:px-[80px]"
   >
@@ -61,11 +36,9 @@ const { posts, categories } = await sanityClient.fetch(`{
     </button>
   </div>
 
-  <!-- categories filtering -->
   <ul
     class="flex py-[20px] px-[16px] md:py-[40px] md:px-[80px] gap-[14px] border-b border-border overflow-hidden"
   >
-    <!-- Add 'All' category button -->
     <li
       class="flex justify-center items-center text-xs md:text-lg text-title py-5 px-[16px] md:py-[24px] md:px-[20px] border border-border rounded-md hover:bg-card cursor-pointer category-item w-full"
       data-category="All"
@@ -84,7 +57,6 @@ const { posts, categories } = await sanityClient.fetch(`{
     }
   </ul>
 
-  <!-- News list -->
   <ul class="flex flex-col font-inter" id="post-list">
     {
       posts.map((post) => (
@@ -100,7 +72,7 @@ const { posts, categories } = await sanityClient.fetch(`{
                 class="rounded-full"
               />
             )}
-            <div class="flex flex-col flex-grow">
+            <div class="flex flex-col flex-grow w-full md:w-[500px] ">
               <h1 class="text-title">{post.author.name}</h1>
               <p class="text-desc">{post.categories?.[0]?.title}</p>
             </div>
@@ -117,7 +89,7 @@ const { posts, categories } = await sanityClient.fetch(`{
               <h1 class="text-desc">
                 {new Date(post.publishedAt).toLocaleDateString()}
               </h1>
-              <div class="flex flex-col gap-[6px] text-desc ">
+              <div class="flex flex-col gap-[6px] text-desc max-w-7xl ">
                 <h1 class="text-lg text-title">{post.title}</h1>
                 <p>{post.contentSections[0].description}</p>
               </div>
@@ -129,7 +101,7 @@ const { posts, categories } = await sanityClient.fetch(`{
             </div>
             <a
               href={`/posts/${post.slug.current}`}
-              class="flex text-desc py-[14px] px-[20px] gap-[4px] border border-border rounded-md hover:bg-card w-48 md:w-72 justify-center "
+              class="hidden md:flex text-desc py-[14px] px-[20px] gap-[4px] border border-border rounded-md hover:bg-card w-48 md:w-72 justify-center "
             >
               Read More
               <Image src={vector2} alt="vect" />
