@@ -7,8 +7,7 @@ import {ROUTES} from "../constants/routes-data";
 ---
 
 <nav
-  class="bg-card flex justify-between items-center md:px-[80px] md:py-[20px] px-[16px] py-[20px] border-y-1 border-[#262626] w-full font-inter"
->
+  class="bg-card flex justify-between items-center md:px-[80px] md:py-[20px] px-[16px] py-[20px] border-y-1 border-[#262626] w-full font-inter">
   <div class="flex gap-[8px] items-center">
     <Image src={logo} alt="logo w-[40px] md:w-[10px]" />
     <p class="text-title">Akera.ai</p>
@@ -17,7 +16,7 @@ import {ROUTES} from "../constants/routes-data";
     {ROUTES.map((route) => 
       <a 
         href={route.link}
-        class="px-[24px] py-[14px] border-0 hover:border-1 hover:border-border hover:bg-background rounded-md"
+        class="px-[24px] py-[14px] border-0 hover:border-1 hover:border-border hover:bg-background rounded-md" 
       >{route.name}</a>
     )}
     
@@ -30,11 +29,8 @@ import {ROUTES} from "../constants/routes-data";
 
 <div class="hidden flex-col items-center bg-card w-full md:hidden text-paragraph space-y-2 p-4 " id="mobile-menu">
   {ROUTES.map((route) => 
-  <a href={route.link} class="block w-full text-center px-[24px] py-[14px] border-0 hover:border-1 hover:border-border hover:bg-background rounded-md" >{route.name}</a>
+  <a href={route.link} class="block w-full text-center px-[24px] py-[14px] border-0 hover:border-1 hover:border-border hover:bg-background rounded-md">{route.name}</a>
   )}
   <button class="block w-full text-center px-[24px] py-[14px] border-0 hover:border-1 hover:border-border hover:bg-background rounded-md" id="close-menu-button">Close</button>
 </div>
 
-<!-- Mobile Menu Script -->
-<script src="./js/toggle-menu">
-</script>

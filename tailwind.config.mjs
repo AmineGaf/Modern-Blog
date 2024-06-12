@@ -7,8 +7,8 @@ export default {
         inter: ['Inter', 'sans-serif'],
         'kumbh-sans': ['Kumbh Sans', 'sans-serif'],
       },
-      screens:{
-        'xxl': {'min': '1920px'}
+      screens: {
+        xxl: { min: '1920px' },
       },
       colors: {
         background: '#141414',

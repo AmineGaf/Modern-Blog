@@ -1,18 +1,18 @@
 export const ROUTES = [
   {
-    name: "Home",
-    link: "/",
+    name: 'Home',
+    link: '/',
   },
   {
-    name: "News",
-    link: "/news",
+    name: 'News',
+    link: '/news',
   },
   {
-    name: "Podcasts",
-    link: "/podcasts",
+    name: 'Podcasts',
+    link: '/podcasts',
   },
   {
-    name: "Resources",
-    link: "/resources",
+    name: 'Resources',
+    link: '/resources',
   },
 ];

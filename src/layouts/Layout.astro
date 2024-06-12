@@ -1,5 +1,10 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
+import Navbar from '../components/navbar.astro';
+import { Image } from 'astro:assets';
+
+import vector2 from "../assets/vector2.svg";
+import Footer from '../components/footer.astro';
 
 interface Props {
   title: string;
@@ -22,7 +27,22 @@ const { title } = Astro.props;
     <title>{title}</title>
     <ViewTransitions />
   </head>
-  <body>
-    <slot />
+  <body class="bg-background min-h-screen flex flex-col md:px-[32px] items-center" transition:animate="none">
+    <div class="flex items-center gap-[10px] pt-[40px] md:py-[14px] pb-[14px] px-[24px]">
+      <p class="text-desc cursor-pointer font-inter hover:underline">
+        Subscribe to our Newsletter For Blogs and Resources
+      </p>
+      <Image src={vector2} alt="vector2" class="w-[12px] mt-1" />
+    </div>
+    <div class="w-full" transition:persist >  
+      <Navbar />
+    </div>  
+
+    <div transition:animate="slide">
+      <slot />
+    </div>
+
+    <Footer />
+    <script src="../components/js/toggle-menu"></script>
   </body>
 </html>

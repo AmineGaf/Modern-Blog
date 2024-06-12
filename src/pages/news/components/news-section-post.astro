@@ -1,0 +1,64 @@
+---
+import { urlForImage } from "../../../sanity/urlForImage.js";
+
+import { Image } from "astro:assets";
+import likes from "../../../assets/likes.svg";
+import vector2 from "../../../assets/vector2.svg";
+import comments from "../../../assets/comments.svg";
+import shares from "../../../assets/shares.svg";
+
+
+const {post} = Astro.props;
+
+---
+
+<li
+    class="flex flex-col md:flex-row py-[40px] px-[16px] border-b border-border md:py-[60px] md:px-[50px] gap-[40px] items-start post-item "
+    data-category={post.categories?.[0]?.title}
+>
+    <div class="flex items-center gap-[10px] w-full md:w-1/6 ">
+    {post.author.image && (
+        <img
+        src={urlForImage(post.author.image).url()}
+        width="50px"
+        class="rounded-full"
+        />
+    )}
+    <div class="flex flex-col flex-grow">
+        <h1 class="text-title ">{post.author.name}</h1>
+        <p class="text-desc ">{post.categories?.[0]?.title}</p>
+    </div>
+    <a
+        href={`/posts/${post.slug.current}`}
+        class="flex md:hidden text-desc py-[14px] px-[20px] gap-[4px] border border-border rounded-md hover:bg-card ml-auto"
+    >
+        Read More
+        <Image src={vector2} alt="vect" />
+    </a>
+    </div>
+    <div class="flex flex-col md:flex-row gap-[20px] md:gap-[40px] items-center w-full">
+    <div class="flex flex-col gap-[20px] md:flex-grow">
+        <h1 class="text-desc">
+        {new Date(post.publishedAt).toLocaleDateString()}
+        </h1>
+        <div class="flex flex-col gap-[6px] text-desc max-w-7xl ">
+        <h1 class="text-lg text-title">{post.title}</h1>
+        <p >
+            {post.contentSections[0].description}
+        </p>
+        </div>
+        <div class="flex gap-[8px]">
+        <Image src={likes} alt="likes" />
+        <Image src={comments} alt="comments" />
+        <Image src={shares} alt="shares" />
+        </div>
+    </div>
+    <a
+        href={`/posts/${post.slug.current}`}
+        class="hidden md:flex text-desc py-[14px] px-[20px] gap-[4px] border border-border rounded-md hover:bg-card w-48 md:w-72 justify-center "
+    >
+        Read More
+        <Image src={vector2} alt="vect" />
+    </a>
+    </div>
+</li>

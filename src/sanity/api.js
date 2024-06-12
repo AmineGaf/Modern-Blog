@@ -1,8 +1,7 @@
-import { useSanityClient } from "astro-sanity";
+import { useSanityClient } from 'astro-sanity';
 
 // Function to fetch posts with optional category filtering
 export async function getAllPosts(category = '') {
-
   const client = useSanityClient();
   // GROQ query with dynamic category filtering
   const categoryFilter = category ? `&& "${category}" in categories[]->title` : '';

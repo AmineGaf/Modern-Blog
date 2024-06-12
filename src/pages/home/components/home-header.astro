@@ -6,26 +6,28 @@ import avatars from "../../../assets/avatars.svg";
 import vector2 from "../../../assets/vector2.svg";
 
 import {FEATURES, STATISTICS} from "../../../constants/home-header";
+
+
+import Feature from "./home-header-feature.astro";
+import Statistic from "./home-header-statistic.astro"
 ---
 
 
-<div class="flex flex-col">
+<div class="flex flex-col" >
   <div class="flex flex-col md:flex-row border-b border-border lg:pr-[162px]">
     <div class="flex flex-col pt-[40px] gap-[40px] md:pt-[100px] lg:pt-[150px] md:gap-[100px]">
       <div class="flex flex-col px-[16px] gap-[14px] md:gap-[30px] justify-start">
         <p class="text-secondary text-xl lg:text-2xl font-kumbh-sans">Your Journey to Tomorrow Begins Here</p>
         <h1 class="text-title text-4xl md:text-6xl max-w-[800px] font-kumbh-sans">Explore the Frontiers of Artificial Intelligence</h1>
-        <p class="text-paragraph    lg:text-lg font-inter max-w-[800px]">Welcome to the epicenter of AI innovation. FutureTech AI News is your passport to a world where machines think, learn, and reshape the future. Join us on this visionary expedition into the heart of AI.</p>
+        <p class="text-paragraph    lg:text-lg font-inter max-w-[800px]">
+          Welcome to the epicenter of AI innovation. FutureTech AI News is 
+          your passport to a world where machines think, learn, and reshape 
+          the future. Join us on this visionary expedition into the heart of AI.
+        </p>
       </div>
       <ul class="flex border-t border-border">
         {STATISTICS.map((stat, index) => (
-          <li class={`flex flex-col py-[20px] px-3 md:px-[95px] lg:py-[50px] ${index === 0 ? 'border-l-0' : 'border-l border-border'}`}>
-            <div class="flex text-lg md:text-4xl gap-1 font-bold">
-              <h1 class="text-title">{stat.value}</h1>
-              <span class="text-primary">+</span>
-            </div>
-            <p class="text-desc">{stat.desc}</p>
-          </li>
+          <Statistic stat={stat} index={index} />
         ))}
       </ul>
       
@@ -48,19 +50,7 @@ import {FEATURES, STATISTICS} from "../../../constants/home-header";
   </div>
   <ul class="flex flex-col md:flex-row">
     {FEATURES.map((feature, index) => (
-      <li key={index} class={`flex flex-col md:border-l border-border p-10 px-16 w-full gap-8 border-b ${index === 0 ? 'md:border-l-0' : ''}`}>
-        <Image src={feature.img} alt={feature.title} />
-        <div class="flex justify-between">
-          <div class="flex flex-col gap-2">
-            <h1 class="text-title">{feature.title}</h1>
-            <p class="text-desc">{feature.subtitle}</p>
-          </div>
-          <button>
-            <Image src={feature.btn} alt={feature.subtitle} /> 
-          </button>
-        </div>
-        <p class="text-desc">{feature.description}</p>
-      </li>
+      <Feature index={index} feature={feature}/>
     ))}
   </ul>
 </div>

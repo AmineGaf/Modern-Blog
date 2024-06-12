@@ -1,9 +1,14 @@
 ---
 import { Image } from "astro:assets";
 
-// assets import
+// assets imports
 import vector2 from "../../../assets/vector2.svg";
-import vd1 from "../../../assets/vd1.svg";
+
+//components impors
+import ViewerPost from "./modern-viewer-post.astro";
+
+// data imports
+import { VIEWERS_DATA } from "../../../constants/modern-viewer";
 
 ---
 
@@ -27,48 +32,11 @@ import vd1 from "../../../assets/vd1.svg";
       View All Testimonials
       <Image src={vector2} alt="vector2" class="mt-[6px] w-[13.75px]" />
     </button>
-  </div>
-  <div class="flex flex-col px-[16px] md:px-[50px] lg:px-[162px] font-inter">
-    <div class="flex flex-col md:flex-row gap-[30px] md:gap-[80px] border-b border-border">
-      <div
-        class="flex flex-col py-[20px] md:py-[80px] gap-[20px] md:gap-[30px] border-b md:border-r md:border-b-0 border-border md:pr-12"
-      >
-        <Image src={vd1} alt="vd1" />
-        <h1 class="text-title">Mars Exploration: Unveiling Alien Landscapes</h1>
-        <p class="text-desc">
-          Embark on a journey through the Red Planet's breathtaking landscapes
-          and uncover the mysteries of Mars.
-        </p>
-      </div>
-      <div class="flex flex-col py-[20px] md:py-[80px] gap-[20px] md:gap-[30px]">
-        <Image src={vd1} alt="vd1" />
-        <h1 class="text-title">Mars Exploration: Unveiling Alien Landscapes</h1>
-        <p class="text-desc">
-          Embark on a journey through the Red Planet's breathtaking landscapes
-          and uncover the mysteries of Mars.
-        </p>
-      </div>
+  </div>  
+    <div class="flex flex-col px-[16px] md:px-[50px] lg:px-[162px] font-inter">
+      {VIEWERS_DATA.map((row) => (
+        <ViewerPost row={row}  />
+      ))}
     </div>
-    <div class="flex flex-col md:flex-row gap-[30px] md:gap-[80px] border-b border-border">
-      <div
-        class="flex flex-col py-[20px] md:py-[80px] gap-[20px] md:gap-[30px] border-b md:border-r md:border-b-0 border-border md:pr-12"
-      >
-        <Image src={vd1} alt="vd1" />
-        <h1 class="text-title">Mars Exploration: Unveiling Alien Landscapes</h1>
-        <p class="text-desc">
-          Embark on a journey through the Red Planet's breathtaking landscapes
-          and uncover the mysteries of Mars.
-        </p>
-      </div>
-      <div class="flex flex-col py-[20px] md:py-[80px] gap-[20px] md:gap-[30px]">
-        <Image src={vd1} alt="vd1" />
-        <h1 class="text-title">Mars Exploration: Unveiling Alien Landscapes</h1>
-        <p class="text-desc">
-          Embark on a journey through the Red Planet's breathtaking landscapes
-          and uncover the mysteries of Mars.
-        </p>
-      </div>
-    </div>
-  </div>
 </div>
 

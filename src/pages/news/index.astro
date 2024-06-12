@@ -1,50 +1,39 @@
 ---
-import { Image } from "astro:assets";
-
-// assets import
-import vector2 from "../../assets/vector2.svg";
-
 // component import
-import NavBar from "../../components/navbar.astro";
-import Footer from "../../components/footer.astro";
+
+import Footer from '../../components/footer.astro';
 
 // ui import
-import ModernViewer from "./components/modern-viewer.astro";
-import NewsSection from "./components/news-section.astro";
-import Layout from "../../layouts/Layout.astro";
+import ModernViewer from './components/modern-viewer.astro';
+import NewsSection from './components/news-section.astro';
+import Layout from '../../layouts/Layout.astro';
 ---
-<Layout title="Akera.ai">
 
-  <div class="bg-background min-h-screen flex flex-col md:px-[32px] items-center">
-    <div class="flex items-center gap-[10px] pt-[40px] md:py-[14px] pb-[14px] px-[24px]">
-      <p class="text-desc cursor-pointer font-inter hover:underline">
-        Subscribe to our Newsletter For Blogs and Resources
-      </p>
-      <Image src={vector2} alt="vector2" class="w-[12px] mt-1" />
-    </div>
-    <NavBar />
-  
-    <div class="flex flex-col w-full py-[32px] px-[16px] gap-[14px] md:gap-[20px] md:py-[64px]">
-      <h1 class="text-3xl md:text-4xl text-title font-kumbh-sans max-w-sm md:max-w-none">
+<Layout title="Akera.ai">
+  <div transition:persist>
+    <div
+      class="flex flex-col w-full py-[32px] px-[16px] gap-[14px] md:gap-[20px] md:py-[64px]"
+    >
+      <h1
+        class="text-3xl md:text-4xl text-title font-kumbh-sans max-w-sm md:max-w-none"
+      >
         Today's Headlines: Stay
         <span class="md:hidden"> Informed</span>
       </h1>
       <div class="flex flex-col md:flex-row gap-[20px] md:items-center">
-        <h1 class="hidden md:flex text-4xl text-title font-kumbh-sans">Informed</h1>
+        <h1 class="hidden md:flex text-4xl text-title font-kumbh-sans">
+          Informed
+        </h1>
         <p class="font-inter text-desc max-w-5xl">
-          Explore the latest news from around the world. We bring you up-to-the-minute updates on the most significant events, trends, and stories. Discover the world through our news coverage.
+          Explore the latest news from around the world. We bring you
+          up-to-the-minute updates on the most significant events, trends, and
+          stories. Discover the world through our news coverage.
         </p>
       </div>
     </div>
-  
-    <!-- News section -->
+
     <NewsSection />
-  
-    <!-- Modern Viewer -->
+
     <ModernViewer />
-  
-    <Footer />
   </div>
 </Layout>
-
-

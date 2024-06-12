@@ -11,6 +11,6 @@ export const getReadingTime = (text) => {
     }
     return undefined;
   } catch (e) {
-    return undefined;
+    return e;
   }
 };
