@@ -20,4 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileMenu.classList.add('hidden');
     });
   });
+
+
+  document.addEventListener('astro:page-load', () => {
+    document.querySelector('.toggle-menu').addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.toggle('expanded');
+    });
+  });
 });
