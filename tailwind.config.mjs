@@ -8,7 +8,7 @@ export default {
         'kumbh-sans': ['Kumbh Sans', 'sans-serif'],
       },
       screens: {
-        xxl: { min: '1920px' },
+        lg: { min: '1920px' },
       },
       colors: {
         background: '#141414',

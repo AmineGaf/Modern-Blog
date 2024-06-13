@@ -49,8 +49,8 @@ const readingTime = getReadingTime(combinedText);
       {post.title}
     </h1>
   </div>
-  <div class="flex flex-col-reverse md:flex-row">
-    <div class="flex flex-col max-w-[1000px]">
+  <div class="flex flex-col-reverse md:flex-row md:justify-center">
+    <div class="flex flex-col max-w-[1000px] lg:max-w-screen-2xl">
       <div
         class="flex flex-col text-desc p-[60px] pl-[80px] gap-[6px] border-y border-border"
       >
@@ -134,7 +134,7 @@ const readingTime = getReadingTime(combinedText);
     </div>
   </div>
   <div
-    class="flex flex-col pt-[40px] md:py-[60px] md:px-[80px] gap-[40px] border-t border-border"
+    class="flex flex-col px-3 py-8 pt-[40px] md:py-[60px] md:px-[80px] gap-[40px] border-t border-border"
   >
     <div class="flex justify-between items-center">
       <h1 class="text-title text-lg">Similar News</h1>
@@ -145,14 +145,14 @@ const readingTime = getReadingTime(combinedText);
         <Image src={vector2} alt="vector2" />
       </button>
     </div>
-    <ul class="flex flex-col lg:flex-row gap-[30px]">
+    <ul class="flex flex-col md:flex-row gap-[30px] lg:justify-center">
       {
         SIMILIAR_NEWS.map((similarNew) => (
           <li class="flex flex-col gap-[16px]">
             <Image
               src={similarNew.img}
               alt={similarNew.title}
-              class="w-full h-auto"
+              class="w-full h-auto lg:w-[700px]"
             />
             <div class="flex flex-col gap-[4px]">
               <h3 class="text-title">{similarNew.title}</h3>
@@ -182,12 +182,14 @@ const readingTime = getReadingTime(combinedText);
   <TechRevolution />
 </Layout>
 
-<script>
-  const readMoreBtn = document.getElementById('read-more-btn');
-  const hiddenContent = document.getElementById('hidden-content');
+<script is:inline>
+  document.addEventListener('astro:page-load', () => {
+    const readMoreBtn = document.getElementById('read-more-btn');
+    const hiddenContent = document.getElementById('hidden-content');
 
-  readMoreBtn.addEventListener('click', () => {
-    hiddenContent.classList.toggle('hidden');
-    readMoreBtn.style.display = 'none';
+    readMoreBtn.addEventListener('click', () => {
+      hiddenContent.classList.toggle('hidden');
+      readMoreBtn.style.display = 'none';
+    });
   });
 </script>
