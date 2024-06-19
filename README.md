@@ -1,5 +1,7 @@
 # Astro Starter Kit: Basics
 
+Live Demo : https://modern-blog-test.netlify.app/
+
 ```sh
 npm create astro@latest -- --template basics
 ```
